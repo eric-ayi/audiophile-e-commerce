@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
-import { Switch, Route } from "react-router-dom";
-import "./App.css";
+import { Routes ,Route } from 'react-router-dom';
+import Headphones from "./pages/Headphones/Headphones";
+import Home from "./pages/Home/Home";
+import Speakers from "./pages/Speakers/Speakers";
+import Earphones from "./pages/Earphones/Earphones";
+import classes from "./App.module.css";
+import Checkout from "./pages/Checkout/Checkout";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import { DataContext } from "./store/DataProvider";
 
 const App = () => {
-  const data = useContext(DataContext);
-  
+  const dataCtx = useContext(DataContext);
+
   return (
-    <div className="app">
-      <Switch>
+    <div className={classes.app}>
+      <Routes>
         <Route path="/product-detail/:productId">
           <ProductDetail product={dataCtx.name} />
         </Route>
@@ -26,9 +33,9 @@ const App = () => {
         <Route path="/">
           <Home />
         </Route>
-      </Switch>
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
